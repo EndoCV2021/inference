@@ -1,5 +1,5 @@
 1. 훈련했던 CONFIG과 모델 파일을 준비합니다.  
-☆ 훈련할 때, 생성된 output/config.yaml을 config으로 사용하면 됩니다. 
+☆ 훈련할 때, 생성된 output/config.yaml을 config으로 사용하면 됩니다.  
   잘안되면 그냥 훈련 코드에 사용했던 cfg 셋팅을 inference.py에 get_predictor() 함수 안에 다 붙여 넣으세요. 
 2. make_submission.sh을 열어서 각자 환경에 맞게 인자들을 수정해주세요. 
 3. 경로 설정을 다음과 같이 합니다.  
