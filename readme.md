@@ -3,6 +3,7 @@
 잘안되면 그냥 훈련 코드에 사용했던 cfg 셋팅을 inference.py에 get_predictor() 함수 안에 다 붙여 넣으세요. 
 2. make_submission.sh을 열어서 각자 환경에 맞게 인자들을 수정해주세요. 
 3. 경로 설정을 다음과 같이 합니다.  
+```
 .  
 ├── inference.py  
 ├── make_submission.sh  
@@ -28,6 +29,7 @@
         ├── Endocv2021_test_data3_1.jpg  
         ├── Endocv2021_test_data3_2.jpg  
         └── Endocv2021_test_data3_3.jpg  
+```
 4. shell 스크립트 실행
 ```
 bash ./make_submission.sh
