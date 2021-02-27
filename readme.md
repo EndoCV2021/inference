@@ -26,7 +26,7 @@
         ├── Endocv2021_test_data3_2.jpg  
         └── Endocv2021_test_data3_3.jpg  
         
-경로설정을 다하고
+경로설정을 다하고 shell 스크립트 실행
 ```
 bash ./make_submission.sh
 ```
