@@ -5,7 +5,7 @@
 3. 경로 설정을 다음과 같이 합니다.  
 .  
 ├── inference.py  
-├── make_submission.sh
+├── make_submission.sh  
 ├── model  
 │   ├── Base-RCNN-FPN.yaml  
 │   ├── Mask_RCNN_Res50_FPN_3x.yaml  
