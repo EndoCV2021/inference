@@ -117,6 +117,7 @@ if __name__ == '__main__':
             print('filename is printing::=====>>', filename)
 
             img = cv2.imread(imagePath)
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
             start.record()
             outputs = predictor(img)
