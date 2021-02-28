@@ -37,5 +37,5 @@ bash ./make_submission.sh
 5. Endocv2021 폴더에 결과가 생성되었는지 확인
 
 TODO.
-1. detection 추가
+1. ~~detection 추가~~ 2/28 done
 2. 자료 UP/DOWNLOAD 
