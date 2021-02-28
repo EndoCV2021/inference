@@ -4,15 +4,17 @@
 Created on Thu Feb 25 14:36:02 2021
 @author: endocv2021@generalizationChallenge
 
-Modified on Sat Feb 27 15:13:03 2021
+Modified on Sun Feb 28 17:18:03 2021
 @author: hyunseoki
 """
 
 import os
 import argparse
 import numpy as np
-import torch
+import copy
 import cv2
+import json
+import torch
 from tifffile import imsave
 from detectron2.config import get_cfg
 from detectron2.engine.defaults import DefaultPredictor
@@ -69,6 +71,49 @@ def get_predictor(cfg_path, model_path, device):
 
     return DefaultPredictor(cfg)
 
+coco_format = {
+    "images": [
+    ],
+    "categories": [
+        {"supercategory": "none", 
+         "id": 1, 
+         "name": "polyp"}
+         ], 
+    "annotations": [
+    ]
+}
+
+def create_image_annotation(file_name, height, width, image_id):
+    file_name = file_name.split('/')[-1] 
+    images = {
+        'file_name': file_name,
+        'height': height,
+        'width': width,
+        'id': image_id
+    }
+    return images
+
+def create_annotation_coco_format(x1, y1, x2, y2, score, image_id, annotation_id):
+    min_x = float(x1)
+    min_y = float(y1)
+    width = float(x2 - x1)
+    height = float(y2 - y1)
+    area = width * height
+    bbox = (min_x, min_y, width, height)   
+
+    annotation = {
+        'id': annotation_id,
+        'image_id': image_id,
+        'bbox': bbox,
+        'area': area,
+        'iscrowd': 0,
+        'category_id': 1,
+        'segmentation': [],
+        'score': float(score)
+    }
+
+    return annotation
+
 
 if __name__ == '__main__':
     args = get_argparser().parse_args()     
@@ -85,10 +130,9 @@ if __name__ == '__main__':
         device=args.device
         )
     
-    task_type = 'segmentation'
-
     # set image folder here!
-    directoryName = create_predFolder(task_type)
+    segDirectoryName = create_predFolder('segmentation')
+    detDirectoryName = create_predFolder('detection')
     
     # ----> three test folders [https://github.com/sharibox/EndoCV2021-polyp_det_seg_gen/wiki/EndoCV2021-Leaderboard-guide]
     subDirs = ['EndoCV_DATA1', 'EndoCV_DATA2', 'EndoCV_DATA3']
@@ -100,19 +144,22 @@ if __name__ == '__main__':
         imgfolder = os.path.join(args.image_path, subDir)
         
         # set folder to save your checkpoints here!
-        saveDir = os.path.join(directoryName , subDir +'_pred')
+        segSaveDir = os.path.join(segDirectoryName , subDir +'_pred')        
     
-        if not os.path.exists(saveDir):
-            os.mkdir(saveDir)
+        if not os.path.exists(segSaveDir):
+            os.mkdir(segSaveDir)
 
         imgfiles = detect_imgs(imgfolder, ext='.jpg')
       
         start = torch.cuda.Event(enable_timing=True)
         end = torch.cuda.Event(enable_timing=True)
-        file = open(saveDir + '/'+"timeElaspsed" + subDir +'.txt', mode='w')
+        file = open(segSaveDir + '/'+"timeElaspsed" + subDir +'.txt', mode='w')
         timeappend = []
-    
-        for imagePath in imgfiles:
+
+        cocoInstance = copy.deepcopy(coco_format)
+        annotations_id = 2 ## start from 2
+
+        for image_id, imagePath in enumerate(imgfiles):
             filename = (imagePath.split('/')[-1]).split('.jpg')[0]
             print('filename is printing::=====>>', filename)
 
@@ -126,9 +173,13 @@ if __name__ == '__main__':
             print(start.elapsed_time(end))
             timeappend.append(start.elapsed_time(end))
 
-            boxes = outputs["instances"].to("cpu").pred_boxes.tensor.numpy()
-            masks = outputs["instances"].to("cpu").pred_masks.numpy()
+            instances = outputs['instances'].to('cpu')
+            image_height, image_width = instances.image_size
+            boxes = instances.pred_boxes.tensor.numpy() ## return float matrix of Nx4. Each row is (x1, y1, x2, y2).
+            scores = instances.scores.numpy()
+            masks = instances.pred_masks.numpy()
 
+            ####### SEGMENTATION #######
             if masks.shape[0] > 0:
                 combined_mask = masks[0]
 
@@ -138,10 +189,38 @@ if __name__ == '__main__':
             else:
                 combined_mask = np.zeros_like(img)
 
-            imsave(saveDir +'/'+ filename +'_mask.tif', (combined_mask*255.0).astype('uint8'))
+            imsave(segSaveDir +'/'+ filename +'_mask.tif', (combined_mask*255.0).astype('uint8'))
+                 
+            ######## DETECTION #########
+            cocoInstance['images'].append(
+                create_image_annotation(
+                    file_name=filename,
+                    height=image_height, 
+                    width=image_width,
+                    image_id=image_id
+                    )
+                )
+            for box, score in zip(boxes, scores):
+                cocoInstance['annotations'].append(
+                    create_annotation_coco_format(
+                        x1=box[0],
+                        y1=box[1],
+                        x2=box[2],
+                        y2=box[3],
+                        score=score,
+                        image_id=image_id,
+                        annotation_id=annotations_id)
+                    )
+    
+                annotations_id += 1
 
             file.write('%s -----> %s \n' % 
                (filename, start.elapsed_time(end)))
+
+        segResultFN = os.path.join(detDirectoryName, subDir + '.json')
         
+        with open(segResultFN, 'w') as f:
+            json.dump(cocoInstance, f)
+       
         file.write('%s -----> %s \n' % 
            ('average_t', np.mean(timeappend)))
