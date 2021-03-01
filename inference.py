@@ -150,11 +150,12 @@ if __name__ == '__main__':
             os.mkdir(segSaveDir)
 
         imgfiles = detect_imgs(imgfolder, ext='.jpg')
-      
-        start = torch.cuda.Event(enable_timing=True)
-        end = torch.cuda.Event(enable_timing=True)
-        file = open(segSaveDir + '/'+"timeElaspsed" + subDir +'.txt', mode='w')
-        timeappend = []
+
+        if args.device != 'cpu':
+            start = torch.cuda.Event(enable_timing=True)
+            end = torch.cuda.Event(enable_timing=True)
+            file = open(segSaveDir + '/'+"timeElaspsed" + subDir +'.txt', mode='w')
+            timeappend = []
 
         cocoInstance = copy.deepcopy(coco_format)
         annotations_id = 2 ## start from 2
@@ -166,12 +167,15 @@ if __name__ == '__main__':
             img = cv2.imread(imagePath)
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-            start.record()
-            outputs = predictor(img)
-            end.record()
-            torch.cuda.synchronize()
-            print(start.elapsed_time(end))
-            timeappend.append(start.elapsed_time(end))
+            if args.device != 'cpu':
+                start.record()
+                outputs = predictor(img)
+                end.record()
+                torch.cuda.synchronize()
+                print(start.elapsed_time(end))
+                timeappend.append(start.elapsed_time(end))
+            else:
+                outputs = predictor(img)
 
             instances = outputs['instances'].to('cpu')
             image_height, image_width = instances.image_size
@@ -214,13 +218,15 @@ if __name__ == '__main__':
     
                 annotations_id += 1
 
-            file.write('%s -----> %s \n' % 
-               (filename, start.elapsed_time(end)))
+            if args.device != 'cpu':
+                file.write('%s -----> %s \n' % 
+                    (filename, start.elapsed_time(end)))
 
         segResultFN = os.path.join(detDirectoryName, subDir + '.json')
         
         with open(segResultFN, 'w') as f:
             json.dump(cocoInstance, f)
-       
-        file.write('%s -----> %s \n' % 
-           ('average_t', np.mean(timeappend)))
+
+        if args.device != 'cpu':
+            file.write('%s -----> %s \n' % 
+                ('average_t', np.mean(timeappend)))
