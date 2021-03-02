@@ -193,7 +193,7 @@ if __name__ == '__main__':
             else:
                 combined_mask = np.zeros_like(img)
 
-            imsave(segSaveDir +'/'+ filename +'_mask.tif', (combined_mask*255.0).astype('uint8'))
+            imsave(segSaveDir +'/'+ filename +'_mask.jpg', (combined_mask*255.0).astype('uint8'))
                  
             ######## DETECTION #########
             cocoInstance['images'].append(
