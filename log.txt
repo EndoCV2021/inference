@@ -1,0 +1,300 @@
+[hollysetri@gpu-node1 ~]$ source projects/def-sponsor00/venvs/challenge-0.1/bin/activate
+[hollysetri@gpu-node1 ~]$ which python
+/project/60063/venvs/challenge-0.1/bin/python
+[hollysetri@gpu-node1 ~]$ ls
+Desktop  Documents  Downloads  Music  Pictures  projects  Public  scratch  Templates  Videos
+[hollysetri@gpu-node1 ~]$ cd projects/
+[hollysetri@gpu-node1 projects]$ ls
+def-sponsor00
+[hollysetri@gpu-node1 projects]$ cd def-sponsor00/
+[hollysetri@gpu-node1 def-sponsor00]$ ls
+endocv2021-test-noCopyAllowed-v1  inferenceCodes  script_test.sh  user02  user06  user10  user14  user18  user22  user26  user30  user34  user38  user42  user46  user50  user54  user58  ych
+gecevision                        mlcsimulamet    sruniga         user03  user07  user11  user15  user19  user23  user27  user31  user35  user39  user43  user47  user51  user55  user59
+hku                               myvirtualEnv    start.sh        user04  user08  user12  user16  user20  user24  user28  user32  user36  user40  user44  user48  user52  user56  user60
+hollysetri                        qumlgroup       user01          user05  user09  user13  user17  user21  user25  user29  user33  user37  user41  user45  user49  user53  user57  venvs
+[hollysetri@gpu-node1 def-sponsor00]$ cd hollysetri/
+[hollysetri@gpu-node1 hollysetri]$ ls
+hollys_venv
+[hollysetri@gpu-node1 hollysetri]$ rm -rf hollys_venv/
+[hollysetri@gpu-node1 hollysetri]$ ls
+[hollysetri@gpu-node1 hollysetri]$ which python
+/project/60063/venvs/challenge-0.1/bin/python
+[hollysetri@gpu-node1 hollysetri]$ python -m venv my_venv
+l[hollysetri@gpu-node1 hollysetri]$ ls
+my_venv
+[hollysetri@gpu-node1 hollysetri]$ source my_venv/bin/activate
+[hollysetri@gpu-node1 hollysetri]$ which python
+/project/60063/hollysetri/my_venv/bin/python
+[hollysetri@gpu-node1 hollysetri]$ python -m pip install numpy
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx512, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/numpy-1.20.1-cp37-cp37m-linux_x86_64.whl
+Installing collected packages: numpy
+Successfully installed numpy-1.20.1
+[hollysetri@gpu-node1 hollysetri]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+>>> exit()
+[hollysetri@gpu-node1 hollysetri]$ which python
+/project/60063/hollysetri/my_venv/bin/python
+[hollysetri@gpu-node1 hollysetri]$ deactivate
+[hollysetri@gpu-node1 hollysetri]$ source projects/def-sponsor00/venvs/challenge-0.1/bin/activate
+bash: projects/def-sponsor00/venvs/challenge-0.1/bin/activate: No such file or directory
+[hollysetri@gpu-node1 hollysetri]$ cd ..
+[hollysetri@gpu-node1 def-sponsor00]$ ls
+endocv2021-test-noCopyAllowed-v1  inferenceCodes  script_test.sh  user02  user06  user10  user14  user18  user22  user26  user30  user34  user38  user42  user46  user50  user54  user58  ych
+gecevision                        mlcsimulamet    sruniga         user03  user07  user11  user15  user19  user23  user27  user31  user35  user39  user43  user47  user51  user55  user59
+hku                               myvirtualEnv    start.sh        user04  user08  user12  user16  user20  user24  user28  user32  user36  user40  user44  user48  user52  user56  user60
+hollysetri                        qumlgroup       user01          user05  user09  user13  user17  user21  user25  user29  user33  user37  user41  user45  user49  user53  user57  venvs
+[hollysetri@gpu-node1 def-sponsor00]$ source projects/def-sponsor00/venvs/challenge-0.1/bin/activate
+bash: projects/def-sponsor00/venvs/challenge-0.1/bin/activate: No such file or directory
+[hollysetri@gpu-node1 def-sponsor00]$ source ~projects/def-sponsor00/venvs/challenge-0.1/bin/activate
+bash: ~projects/def-sponsor00/venvs/challenge-0.1/bin/activate: No such file or directory
+[hollysetri@gpu-node1 def-sponsor00]$ source venvs/challenge-0.1/bin/activate
+[hollysetri@gpu-node1 def-sponsor00]$ which python
+/project/60063/venvs/challenge-0.1/bin/python
+[hollysetri@gpu-node1 def-sponsor00]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import torch
+>>> torch.cuda.device_count()
+1
+>>> exit()
+[hollysetri@gpu-node1 def-sponsor00]$ python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/index.html
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx512, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic, https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/index.html
+Collecting detectron2
+  Using cached https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/detectron2-0.3%2Bcu110-cp37-cp37m-linux_x86_64.whl (7.1 MB)
+Requirement already satisfied: matplotlib in ./venvs/challenge-0.1/lib/python3.7/site-packages (from detectron2) (3.3.4)
+Collecting tqdm>4.29.0
+  Using cached tqdm-4.58.0-py2.py3-none-any.whl (73 kB)
+Requirement already satisfied: Pillow>=7.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from detectron2) (8.0.1)
+Requirement already satisfied: termcolor>=1.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from detectron2) (1.1.0)
+Collecting pydot
+  Using cached pydot-1.4.2-py2.py3-none-any.whl (21 kB)
+Collecting fvcore>=0.1.2
+  Using cached fvcore-0.1.3.post20210227.tar.gz (47 kB)
+Collecting tabulate
+  Using cached tabulate-0.8.9-py3-none-any.whl (25 kB)
+Collecting pycocotools>=2.0.2
+  Using cached pycocotools-2.0.2.tar.gz (23 kB)
+Requirement already satisfied: tensorboard in ./venvs/challenge-0.1/lib/python3.7/site-packages (from detectron2) (2.4.1)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/future-0.18.2-py3-none-any.whl
+Collecting yacs>=0.1.6
+  Downloading yacs-0.1.8-py3-none-any.whl (14 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cloudpickle-1.6.0-py3-none-any.whl
+Requirement already satisfied: kiwisolver>=1.0.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from matplotlib->detectron2) (1.3.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from matplotlib->detectron2) (2.4.7)
+Requirement already satisfied: numpy>=1.15 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from matplotlib->detectron2) (1.19.4)
+Requirement already satisfied: cycler>=0.10 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from matplotlib->detectron2) (0.10.0)
+Requirement already satisfied: python-dateutil>=2.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from matplotlib->detectron2) (2.8.1)
+Requirement already satisfied: pyyaml>=5.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from fvcore>=0.1.2->detectron2) (5.3.1)
+Collecting iopath>=0.1.2
+  Downloading iopath-0.1.4.tar.gz (14 kB)
+Requirement already satisfied: setuptools>=18.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from pycocotools>=2.0.2->detectron2) (46.1.3)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/Cython-0.29.22-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: markdown>=2.6.8 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (3.3.3)
+Requirement already satisfied: absl-py>=0.4 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (0.11.0)
+Requirement already satisfied: grpcio>=1.24.3 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (1.32.0)
+Requirement already satisfied: protobuf>=3.6.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (3.14.0)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (1.7.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (0.4.2)
+Requirement already satisfied: requests<3,>=2.21.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (2.25.1)
+Requirement already satisfied: werkzeug>=0.11.15 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (1.0.1)
+Requirement already satisfied: six>=1.10.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (1.15.0)
+Requirement already satisfied: wheel>=0.26; python_version >= "3" in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (0.35.1)
+Requirement already satisfied: google-auth<2,>=1.6.3 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from tensorboard->detectron2) (1.24.0)
+Collecting portalocker
+  Downloading portalocker-2.2.1-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: importlib-metadata; python_version < "3.8" in ./venvs/challenge-0.1/lib/python3.7/site-packages (from markdown>=2.6.8->tensorboard->detectron2) (3.4.0)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard->detectron2) (1.3.0)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (1.26.3)
+Requirement already satisfied: idna<3,>=2.5 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (2.10)
+Requirement already satisfied: certifi>=2017.4.17 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (2020.12.5)
+Requirement already satisfied: chardet<5,>=3.0.2 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (4.0.0)
+Requirement already satisfied: rsa<5,>=3.1.4; python_version >= "3.6" in ./venvs/challenge-0.1/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard->detectron2) (4.7)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard->detectron2) (4.2.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard->detectron2) (0.2.8)
+Requirement already satisfied: typing-extensions>=3.6.4; python_version < "3.8" in ./venvs/challenge-0.1/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->markdown>=2.6.8->tensorboard->detectron2) (3.7.4.3)
+Requirement already satisfied: zipp>=0.5 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->markdown>=2.6.8->tensorboard->detectron2) (3.4.0)
+Requirement already satisfied: oauthlib>=3.0.0 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard->detectron2) (3.1.0)
+Requirement already satisfied: pyasn1>=0.1.3 in ./venvs/challenge-0.1/lib/python3.7/site-packages (from rsa<5,>=3.1.4; python_version >= "3.6"->google-auth<2,>=1.6.3->tensorboard->detectron2) (0.4.8)
+Building wheels for collected packages: fvcore, pycocotools, iopath
+  Building wheel for fvcore (setup.py) ... done
+  Created wheel for fvcore: filename=fvcore-0.1.3.post20210227-py3-none-any.whl size=59000 sha256=30e5889efdcb7745dae540fb44a5b09c82725bd97cc8b7bec3eac1da9d866a08
+  Stored in directory: /home/hollysetri/.cache/pip/wheels/96/79/5c/3e865494f8d7cd8467710643e6d916cea7df9f9095657dcf90
+  Building wheel for pycocotools (setup.py) ... done
+  Created wheel for pycocotools: filename=pycocotools-2.0.2-cp37-cp37m-linux_x86_64.whl size=363326 sha256=f2d30682e53db02e07e530e44eb141cd0925d0f67857df08921408266f6b5c45
+  Stored in directory: /home/hollysetri/.cache/pip/wheels/bc/cf/1b/e95c99c5f9d1648be3f500ca55e7ce55f24818b0f48336adaf
+  Building wheel for iopath (setup.py) ... done
+  Created wheel for iopath: filename=iopath-0.1.4-py3-none-any.whl size=15572 sha256=1d1619e2504c4151d3b54822e490cadeb1a6e513c50663edfe871c2b0672a88c
+  Stored in directory: /home/hollysetri/.cache/pip/wheels/50/1d/d8/c56ebd0b2d2296b1e2b379d6e3cb94f6a40593a1ce1e2d8930
+Successfully built fvcore pycocotools iopath
+Installing collected packages: tqdm, pydot, yacs, tabulate, portalocker, iopath, fvcore, cython, pycocotools, future, cloudpickle, detectron2
+Successfully installed cloudpickle-1.6.0 cython-0.29.22 detectron2-0.3+cu110 future-0.18.2 fvcore-0.1.3.post20210227 iopath-0.1.4 portalocker-2.2.1 pycocotools-2.0.2 pydot-1.4.2 tabulate-0.8.9 tqdm-4.58.0 yacs-0.1.8
+[hollysetri@gpu-node1 def-sponsor00]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import detecdtron2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'detecdtron2'
+>>> import detectron2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'detectron2'
+>>> exit()
+[hollysetri@gpu-node1 def-sponsor00]$ which python
+/project/60063/venvs/challenge-0.1/bin/python
+[hollysetri@gpu-node1 def-sponsor00]$ which pip
+/project/60063/venvs/challenge-0.1/bin/pip
+[hollysetri@gpu-node1 def-sponsor00]$ pip list
+Package                Version                        
+---------------------- -------------------------------
+absl-py                0.11.0                         
+astunparse             1.6.3                          
+cachetools             4.2.1                          
+certifi                2020.12.5                      
+chardet                4.0.0                          
+cycler                 0.10.0                         
+datatable              1.0.0a0+build.1613760766.user01
+decorator              4.4.2                          
+flatbuffers            1.12                           
+gast                   0.3.3                          
+google-auth            1.24.0                         
+google-auth-oauthlib   0.4.2                          
+google-pasta           0.2.0                          
+grpcio                 1.32.0                         
+h5py                   2.10.0                         
+idna                   2.10                           
+imageio                2.9.0                          
+importlib-metadata     3.4.0                          
+joblib                 1.0.1                          
+Keras                  2.3.1                          
+Keras-Applications     1.0.8                          
+Keras-Preprocessing    1.1.2                          
+kiwisolver             1.3.1                          
+Markdown               3.3.3                          
+matplotlib             3.3.4                          
+networkx               2.5                            
+numpy                  1.19.4                         
+oauthlib               3.1.0                          
+opencv-python          3.4.4.19                       
+opt-einsum             3.3.0                          
+Pillow                 8.0.1                          
+pip                    20.0.2                         
+protobuf               3.14.0                         
+pyasn1                 0.4.8                          
+pyasn1-modules         0.2.8                          
+pyparsing              2.4.7                          
+python-dateutil        2.8.1                          
+PyWavelets             1.1.1                          
+PyYAML                 5.3.1                          
+requests               2.25.1                         
+requests-oauthlib      1.3.0                          
+rsa                    4.7                            
+scikit-image           0.18.1                         
+scikit-learn           0.24.1                         
+scipy                  1.6.0                          
+setuptools             46.1.3                         
+six                    1.15.0                         
+tensorboard            2.4.1                          
+tensorboard-plugin-wit 1.7.0                          
+tensorflow-estimator   2.4.0                          
+tensorflow-gpu         2.4.1                          
+termcolor              1.1.0                          
+threadpoolctl          2.1.0                          
+tifffile               2020.9.3                       
+torch                  1.7.1                          
+torchvision            0.8.2                          
+typing-extensions      3.7.4.3                        
+urllib3                1.26.3                         
+Werkzeug               1.0.1                          
+wheel                  0.35.1                         
+wrapt                  1.12.1                         
+zipp                   3.4.0                          
+[hollysetri@gpu-node1 def-sponsor00]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import detectron
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'detectron'
+>>> import torch
+>>> exit()
+[hollysetri@gpu-node1 def-sponsor00]$ deactivate
+[hollysetri@gpu-node1 def-sponsor00]$ ls
+endocv2021-test-noCopyAllowed-v1  inferenceCodes  script_test.sh  user02  user06  user10  user14  user18  user22  user26  user30  user34  user38  user42  user46  user50  user54  user58  ych
+gecevision                        mlcsimulamet    sruniga         user03  user07  user11  user15  user19  user23  user27  user31  user35  user39  user43  user47  user51  user55  user59
+hku                               myvirtualEnv    start.sh        user04  user08  user12  user16  user20  user24  user28  user32  user36  user40  user44  user48  user52  user56  user60
+hollysetri                        qumlgroup       user01          user05  user09  user13  user17  user21  user25  user29  user33  user37  user41  user45  user49  user53  user57  venvs
+[hollysetri@gpu-node1 def-sponsor00]$ cd hollysetri/
+[hollysetri@gpu-node1 hollysetri]$ source my_venv/bin/activate
+[hollysetri@gpu-node1 hollysetri]$ whiti python
+bash: whiti: command not found
+[hollysetri@gpu-node1 hollysetri]$ which python
+/project/60063/hollysetri/my_venv/bin/python
+[hollysetri@gpu-node1 hollysetri]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+>>> exit()
+[hollysetri@gpu-node1 hollysetri]$ pip install numpy
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx512, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/numpy-1.20.1-cp37-cp37m-linux_x86_64.whl
+Installing collected packages: numpy
+Successfully installed numpy-1.20.1
+[hollysetri@gpu-node1 hollysetri]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> imnport numpy
+  File "<stdin>", line 1
+    imnport numpy
+                ^
+SyntaxError: invalid syntax
+>>> import numpy
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+>>> exit()
+[hollysetri@gpu-node1 hollysetri]$ pip3 instsall numpy
+ERROR: unknown command "instsall" - maybe you meant "install"
+[hollysetri@gpu-node1 hollysetri]$ pip3 install numpy
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx512, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/numpy-1.20.1-cp37-cp37m-linux_x86_64.whl
+Installing collected packages: numpy
+Successfully installed numpy-1.20.1
+[hollysetri@gpu-node1 hollysetri]$ python3
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+>>> exit()
+[hollysetri@gpu-node1 hollysetri]$ python
+Python 3.7.9 (default, Nov 11 2020, 17:03:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import umpy
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'umpy'
+>>> exit()
+[hollysetri@gpu-node1 hollysetri]$ 
