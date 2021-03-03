@@ -48,9 +48,9 @@ def get_argparser():
                         help="PATH TO DETECTRON2 CONFIG")
     parser.add_argument("--model_path", type=str, default='./model/model_0040999.pth',
                         help="PATH TO MODEL WEIGHT")
-    parser.add_argument("--image_path", type=str, default='./sample_data',
+    parser.add_argument("--image_path", type=str, default='./project/def-sponsor00/endocv2021-test-noCopyAllowed-v1/',
                         help="PATH TO IMAGE FOLDER")
-    parser.add_argument("--device", type=str, default='cpu', 
+    parser.add_argument("--device", type=str, default='cuda:0', 
                         help="DEVICE ID")
 
     return parser
@@ -198,7 +198,7 @@ if __name__ == '__main__':
             ######## DETECTION #########
             cocoInstance['images'].append(
                 create_image_annotation(
-                    file_name=filename,
+                    file_name=imagePath.split('/')[-1],
                     height=image_height, 
                     width=image_width,
                     image_id=image_id
