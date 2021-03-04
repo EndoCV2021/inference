@@ -106,10 +106,10 @@ def create_image_annotation(file_name, height, width, image_id):
 
 
 def create_annotation_coco_format(x1, y1, x2, y2, score, image_id, annotation_id):
-    min_x = float(x1)
-    min_y = float(y1)
-    width = float(x2 - x1)
-    height = float(y2 - y1)
+    min_x = int(x1)
+    min_y = int(y1)
+    width = int(x2 - x1)
+    height = int(y2 - y1)
     area = width * height
     bbox = (min_x, min_y, width, height)   
 
